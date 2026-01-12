@@ -1,7 +1,10 @@
-basePath = "C:\Users\keyas\OneDrive\Desktop\Biorithm\Tasks";
-fname = "fecgsyn01_snr00dB_l1_c0.mat";
+thisFilePath = mfilename('fullpath');
+thisFolder   = fileparts(thisFilePath);
 
-S = load(fullfile(basePath, fname));
+dataDir = fullfile(thisFolder, '..', 'data');
+fname = 'fecgsyn01_snr00dB_l1_c0.mat';
+S = load(fullfile(dataDir, fname));
+
 out = S.out;
 
 fs = out.param.fs;
@@ -116,4 +119,5 @@ ratio_before = ECG_p/(HF_p+BW_p);
 ratio_after  = ECG_a/(HF_a+BW_a);
 
 disp(ratio_before);
+
 disp(ratio_after);
